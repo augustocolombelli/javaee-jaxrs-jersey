@@ -2,6 +2,8 @@ package com.company.model;
 
 import java.util.Calendar;
 
+import com.thoughtworks.xstream.XStream;
+
 public class Creditor {
 
 	private Integer id;
@@ -49,6 +51,10 @@ public class Creditor {
 
 	public void setDocumentNumber(Integer documentNumber) {
 		this.documentNumber = documentNumber;
+	}
+
+	public String toXML() {
+		return new XStream().toXML(this);
 	}
 
 }

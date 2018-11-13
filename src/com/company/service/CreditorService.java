@@ -13,4 +13,8 @@ public class CreditorService {
 		return dao.getAll();
 	}
 	
+	public Creditor findById(Integer id) {
+		return dao.findById(id);
+	}
+	
 }
