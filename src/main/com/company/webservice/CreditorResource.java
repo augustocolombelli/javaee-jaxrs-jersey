@@ -17,7 +17,5 @@ public class CreditorResource {
 	public String findById() {
 		return creditorService.findById(1).toXML();
 	}
-	
-	
 
 }
