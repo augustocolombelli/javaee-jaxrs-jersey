@@ -1,7 +1,7 @@
 ### JAX-RS with Jersey
 Simple example using Jersey for create a REST web services.
 
-#### Converting the object to XML or JSON
+#### Converting the object to XML
 Add this dependency in pom.xml:
 ```
 <dependency>
@@ -10,12 +10,29 @@ Add this dependency in pom.xml:
   <version>1.2.2</version>
 </dependency>
 ```
-In class that is necessary convert to XML or JSON:
+In class that is necessary convert to XML:
 ```
   public String toXML() {
     return new XStream().toXML(this);
   }
 ```
+
+#### Converting the object to Json
+Add this dependency in pom.xml:
+```
+<dependency>
+  <groupId>com.google.code.gson</groupId>
+  <artifactId>gson</artifactId>
+  <version>2.8.5</version>
+</dependency>
+```
+In class that is necessary convert to Json:
+```
+public String toJSON() {
+	return new Gson().toJson(this);
+}
+```
+
 
 #### Using Grizzly to start server with web services
 Add this dependency in pom.xml:

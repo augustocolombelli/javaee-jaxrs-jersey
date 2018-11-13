@@ -36,11 +36,18 @@
       <version>2.25.1</version>
     </dependency>
 
-    <!-- XStream to convert object to JSON or XML -->
+    <!-- XStream to convert object to XML -->
     <dependency>
       <groupId>xstream</groupId>
       <artifactId>xstream</artifactId>
       <version>1.2.2</version>
+    </dependency>
+
+    <!-- Gson to convert object to JSON-->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.5</version>
     </dependency>
 
     <!-- Grizzly to run WS server -->

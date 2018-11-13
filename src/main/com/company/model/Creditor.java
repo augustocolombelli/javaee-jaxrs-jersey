@@ -2,6 +2,7 @@ package com.company.model;
 
 import java.util.Calendar;
 
+import com.google.gson.Gson;
 import com.thoughtworks.xstream.XStream;
 
 public class Creditor {
@@ -55,6 +56,10 @@ public class Creditor {
 
 	public String toXML() {
 		return new XStream().toXML(this);
+	}
+	
+	public String toJSON() {
+		return new Gson().toJson(this);
 	}
 
 }

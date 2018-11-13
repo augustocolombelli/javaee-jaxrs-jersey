@@ -33,7 +33,7 @@ public class CreditorResourceTest {
 	public void shouldReturnOneCreditor() {
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target("http://localhost:8080/");
-		String content = target.path("creditors").request().get(String.class);
+		String content = target.path("creditors/1").request().get(String.class);
 		
 		Creditor creditor = (Creditor) new XStream().fromXML(content);
 		
