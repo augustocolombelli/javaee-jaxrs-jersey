@@ -6,6 +6,8 @@
   <artifactId>javaee-jaxrs-jersey</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
+  <packaging>war</packaging>
+
   <dependencies>
     <dependency>
       <groupId>javax.ws.rs</groupId>
@@ -36,6 +38,12 @@
       <version>2.25.1</version>
     </dependency>
 
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+    </dependency>
+
     <!-- XStream to convert object to XML -->
     <dependency>
       <groupId>xstream</groupId>
@@ -43,7 +51,7 @@
       <version>1.2.2</version>
     </dependency>
 
-    <!-- Gson to convert object to JSON-->
+    <!-- Gson to convert object to JSON -->
     <dependency>
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>
@@ -65,7 +73,6 @@
     </dependency>
 
   </dependencies>
-
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
@@ -73,10 +80,19 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.0</version>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <warSourceDirectory>WebContent</warSourceDirectory>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
+
     </plugins>
   </build>
 </project>
