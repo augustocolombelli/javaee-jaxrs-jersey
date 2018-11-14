@@ -25,14 +25,13 @@ public class CreditorResource {
 	@Path("{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
-	public String findById(@PathParam("id") Integer id) {
-		return creditorService.findById(id).toXML();
+	public Creditor findById(@PathParam("id") Integer id) {
+		return creditorService.findById(id);
 	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
-	public Response insert(String content) {
-		Creditor creditor = (Creditor) new XStream().fromXML(content);
+	public Response insert(Creditor creditor) {
 		creditorService.insert(creditor);
 		URI uri = URI.create("/creditors/" + creditor.getId());
 		return Response.created(uri).build();
@@ -48,10 +47,9 @@ public class CreditorResource {
 
 	@Path("{id}/name")
 	@PUT
-	public Response changeName(String content, @PathParam("id") Integer id) {
-		Creditor creditorWithNewValues = (Creditor) new XStream().fromXML(content);
+	public Response changeName(Creditor creditor, @PathParam("id") Integer id) {
 		Creditor creditorToChangeName = creditorService.findById(id);
-		creditorToChangeName.setName(creditorWithNewValues.getName());
+		creditorToChangeName.setName(creditor.getName());
 		return Response.ok().build();
 	}
 
