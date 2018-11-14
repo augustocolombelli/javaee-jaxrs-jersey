@@ -11,4 +11,8 @@ public class CreditorService {
 		return dao.findById(id);
 	}
 	
+	public Creditor insert(Creditor creditor) {
+		return dao.insert(creditor);
+	}
+	
 }

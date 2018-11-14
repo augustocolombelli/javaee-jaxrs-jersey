@@ -1,6 +1,8 @@
 package com.company.model;
 
-import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.thoughtworks.xstream.XStream;
@@ -9,13 +11,16 @@ public class Creditor {
 
 	private Integer id;
 	private String name;
-	private Calendar birth;
+	private Date birth;
 	private Integer documentNumber;
+	private List<AccountBank> accountsBank;
 
 	public Creditor() {
+		this.accountsBank = new ArrayList<AccountBank>();
 	}
 
-	public Creditor(Integer id, String name, Calendar birth, Integer documentNumber) {
+	public Creditor(Integer id, String name, Date birth, Integer documentNumber) {
+		this.accountsBank = new ArrayList<AccountBank>();
 		this.id = id;
 		this.name = name;
 		this.birth = birth;
@@ -38,11 +43,11 @@ public class Creditor {
 		this.name = name;
 	}
 
-	public Calendar getBirth() {
+	public Date getBirth() {
 		return birth;
 	}
 
-	public void setBirth(Calendar birth) {
+	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
 
@@ -57,9 +62,27 @@ public class Creditor {
 	public String toXML() {
 		return new XStream().toXML(this);
 	}
-	
+
 	public String toJSON() {
 		return new Gson().toJson(this);
+	}
+
+	public List<AccountBank> getAccountsBank() {
+		return accountsBank;
+	}
+
+	public void addAccountBank(AccountBank accountBank) {
+		this.accountsBank.add(accountBank);
+	}
+
+	public void removeAccountBank(Integer accountId) {
+		AccountBank accountBankToRemove = null;
+		for (AccountBank accountBank : accountsBank) {
+			if (accountBank.getId() == accountId) {
+				accountBankToRemove = accountBank;
+			}
+		}
+		this.accountsBank.remove(accountBankToRemove);
 	}
 
 }
